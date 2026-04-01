@@ -1,0 +1,114 @@
+/* Container */
+.container {
+  max-width: 700px;   /* wider than before */
+  margin: 20px auto;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  padding: 20px;
+  width: 1120px;
+  font-family: Arial, sans-serif;
+}
+
+
+/* Top bar */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.top-button {
+  flex: 1;
+  margin: 0 5px;
+  padding: 10px;
+  background: #0078d7;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.top-button:hover {
+  background: #005a9e;
+}
+
+/* Number display */
+.number-display {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.number-display input {
+  width: 80%;
+  padding: 10px;
+  font-size: 18px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+}
+
+.number-display label {
+  display: block;
+  margin-top: 8px;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Keyboard */
+.keyboard {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.keyboard button {
+  padding: 12px;
+  font-size: 16px;
+  background: #e0e0e0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.keyboard button:hover {
+  background: #c0c0c0;
+}
+
+/* Bottom bar */
+.bottom-bar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bottom-button {
+  flex: 1;
+  margin: 0 5px;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.bottom-button.cancel {
+  background: #d9534f;
+  color: #fff;
+}
+
+.bottom-button.cancel:hover {
+  background: #b52b27;
+}
+
+.bottom-button.call {
+  background: #5cb85c;
+  color: #fff;
+}
+
+.bottom-button.call:hover {
+  background: #3d8b3d;
+}

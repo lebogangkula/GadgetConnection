@@ -1,0 +1,67 @@
+
+<div class="container">
+    <div class="top-bar">
+      <button (click) = "GadgetInfor()" class="top-button">SMS</button>
+      <button (click) = "GadgetInfor()" class="top-button">Contacts</button>
+      <button (click) = "SaveNumber()" class="top-button">Save</button>
+    </div>
+    <div class="number-display">
+      <input [(ngModel)]="addNumber" type="text" placeholder="Enter user mail..." />
+    </div>
+    <div class="keyboard">
+  <!-- Numbers Row -->
+    <button (click)="pressedKey('1')">1</button>
+    <button (click)="pressedKey('2')">2</button>
+    <button (click)="pressedKey('3')">3</button>
+    <button (click)="pressedKey('4')">4</button>
+    <button (click)="pressedKey('5')">5</button>
+    <button (click)="pressedKey('6')">6</button>
+    <button (click)="pressedKey('7')">7</button>
+    <button (click)="pressedKey('8')">8</button>
+    <button (click)="pressedKey('9')">9</button>
+    <button (click)="pressedKey('0')">0</button>
+    <button (click)="pressedKey('Q')">Q</button>
+    <button (click)="pressedKey('W')">W</button>
+    <button (click)="pressedKey('E')">E</button>
+    <button (click)="pressedKey('R')">R</button>
+    <button (click)="pressedKey('T')">T</button>
+    <button (click)="pressedKey('Y')">Y</button>
+    <button (click)="pressedKey('U')">U</button>
+    <button (click)="pressedKey('I')">I</button>
+    <button (click)="pressedKey('O')">O</button>
+    <button (click)="pressedKey('P')">P</button>
+    <button (click)="pressedKey('A')">A</button>
+    <button (click)="pressedKey('S')">S</button>
+    <button (click)="pressedKey('D')">D</button>
+    <button (click)="pressedKey('F')">F</button>
+    <button (click)="pressedKey('G')">G</button>
+    <button (click)="pressedKey('H')">H</button>
+    <button (click)="pressedKey('J')">J</button>
+    <button (click)="pressedKey('K')">K</button>
+    <button (click)="pressedKey('L')">L</button>
+    <button (click)="pressedKey('Z')">Z</button>
+    <button (click)="pressedKey('X')">X</button>
+    <button (click)="pressedKey('C')">C</button>
+    <button (click)="pressedKey('V')">V</button>
+    <button (click)="pressedKey('B')">B</button>
+    <button (click)="pressedKey('N')">N</button>
+    <button (click)="pressedKey('M')">M</button>
+    <button (click)="pressedKey('*')">*</button>
+    <button (click)="pressedKey('#')">#</button>
+    <button (click)="pressedKey('@')">@</button>
+    <button (click)="pressedKey('&')">&</button>
+    <button (click)="pressedKey('%')">%</button>
+    <button (click)="pressedKey('+')">+</button>
+    <button (click)="pressedKey('-')">-</button>
+    <button (click)="pressedKey('/')">/</button>
+    <button (click)="pressedKey('=')">=</button>
+    <button (click)="pressedKey('?')">?</button>
+    <button (click)="pressedKey('!')">!</button>
+  </div>
+    <div class="bottom-bar">
+      <button (click)="CancelNumber()" class="bottom-button cancel">Cancel Number</button>
+      <button (click)="GadgetCall()" class="bottom-button call">Call</button>
+    </div>
+  </div>
+
+  
