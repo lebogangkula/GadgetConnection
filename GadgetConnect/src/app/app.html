@@ -1,13 +1,28 @@
 
 <div class="container">
+
+  <div class="gadgetUi">
     <div class="top-bar">
-      <button (click) = "GadgetInfor()" class="top-button">SMS</button>
-      <button (click) = "GadgetInfor()" class="top-button">Contacts</button>
+      <button (click) = "GadgetSMS()" class="top-button">SMS</button>
       <button (click) = "SaveNumber()" class="top-button">Save</button>
     </div>
-    <div class="number-display">
-      <input [(ngModel)]="addNumber" type="text" placeholder="Enter user mail..." />
+
+   <div class="number-display">
+  <input [(ngModel)]="addNumber" 
+         type="text" 
+         placeholder="Enter user mail..." 
+         (focus)="showContacts = true" 
+         (blur)="hideContacts()" />
+  
+  <!-- Dropdown list -->
+  <div class="dropdown-list" *ngIf="showContacts && LabNumbers.length > 0">
+    <div *ngFor="let contact of LabNumbers" 
+         (mousedown)="selectContact(contact)">
+      {{ contact }}
     </div>
+  </div>
+</div>
+
     <div class="keyboard">
   <!-- Numbers Row -->
     <button (click)="pressedKey('1')">1</button>
@@ -58,10 +73,16 @@
     <button (click)="pressedKey('?')">?</button>
     <button (click)="pressedKey('!')">!</button>
   </div>
+
     <div class="bottom-bar">
       <button (click)="CancelNumber()" class="bottom-button cancel">Cancel Number</button>
       <button (click)="GadgetCall()" class="bottom-button call">Call</button>
     </div>
+
+    </div>
+    
+
+
   </div>
 
   

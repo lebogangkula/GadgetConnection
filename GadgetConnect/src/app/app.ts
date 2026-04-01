@@ -1,10 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
  // Import controller script
 
 @Component({
   selector: 'app-root',
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
@@ -13,11 +14,8 @@ export class App {
   
   addNumber: string = "";
   LabNumbers: string[] = [];
-
-  GadgetInfor() {
-    // Example: show all subscribers from controller
-  }
-
+  showContacts: boolean = false;
+ 
   SaveNumber() {
     if (this.addNumber !== "" && this.addNumber.length > 4 && this.addNumber.length < 15 && !this.LabNumbers.includes(this.addNumber)) {
       this.LabNumbers.push(this.addNumber);
@@ -25,12 +23,22 @@ export class App {
     }
   }
 
+  GadgetSMS(){
+    if(this.addNumber === ""){
+        alert("Hell no");
+    }
+    else{
+          console.log("Hell your message has been sent " + this.addNumber);
+    }
+
+}
   pressedKey(num: string) {
     if (this.addNumber.length < 15) {
       this.addNumber += num;
       console.log(this.addNumber);
     } else {
       alert("Maximum number of digits reached");
+      
     }
   }
 
@@ -38,6 +46,15 @@ export class App {
     this.addNumber = "";
   }
 
+   selectContact(contact: string) {
+    this.addNumber = contact;
+    this.showContacts = false;
+  }
+
+  hideContacts() {
+    // Delay hiding so click event can register
+    setTimeout(() => this.showContacts = false, 200);
+  }
   GadgetCall() {
     if (this.addNumber !== "" && this.addNumber.length > 4 && this.addNumber.length < 15 && this.LabNumbers.includes(this.addNumber)) {
       // Use controller to simulate SMS/call
@@ -48,6 +65,9 @@ export class App {
     }
   }
 
+ addNum(value: string){
+
+ }
   CancelSubscription() {
     if (this.addNumber !== "") {
       alert("Number " + this.addNumber + " unsubscribed");
