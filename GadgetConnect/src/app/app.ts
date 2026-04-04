@@ -15,6 +15,7 @@ export class App {
   addNumber: string = "";
   LabNumbers: string[] = [];
   showContacts: boolean = false;
+  sms: string = "";
  
   SaveNumber() {
     if (this.addNumber !== "" && this.addNumber.length > 4 && this.addNumber.length < 15 && !this.LabNumbers.includes(this.addNumber)) {
@@ -23,15 +24,23 @@ export class App {
     }
   }
 
-  GadgetSMS(){
-    if(this.addNumber === ""){
-        alert("Hell no");
-    }
-    else{
-          console.log("Hell your message has been sent " + this.addNumber);
-    }
+  GadgetSMS() {
+    // Basic popup prompt for SMS input
 
-}
+    const smsMessage = prompt("Enter your SMS message:");
+
+    if (smsMessage !== null && smsMessage.trim() !== "" && this.addNumber !== "" && this.addNumber.length > 4 && this.addNumber.length < 15 && this.LabNumbers.includes(this.addNumber)) {
+      // For now, just log or alert the message
+      this.sms = smsMessage;
+      console.log(this.addNumber + " "+ smsMessage);
+      alert(smsMessage);
+
+      // Later, you can integrate with an SMS API here
+      // e.g., call a backend service to send the SMS
+    } else {
+      alert("No message entered.");
+    }
+  }
   pressedKey(num: string) {
     if (this.addNumber.length < 15) {
       this.addNumber += num;
