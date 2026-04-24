@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
  // Import controller script
@@ -9,77 +10,64 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
-export class App {
+export class App{
  protected readonly title = signal('GadgetConnect');
-  
+
   addNumber: string = "";
   LabNumbers: string[] = [];
   showContacts: boolean = false;
   sms: string = "";
   savedNumbers: any;
+  connection:any;
+  devices: any;
+
  
 
+  deviceName = 'MyDevice'; // you can make this dynamic later
+  userCode!: string;
+
+  constructor(private http: HttpClient) {}
+
+
   ngOnInit(){
-    const stored = localStorage.getItem("LabNumbers");
-this.savedNumbers = stored ? JSON.parse(stored) : [];
-console.log(this.savedNumbers);
+     
+this.http.post('http://127.0.0.1:8000/register/', { device_name: this.deviceName })
+  .subscribe({
+    
+    next: (response) => console.log('Registered:', response),
+    error: (err) => console.error('Request failed:', err),
+    complete: () => console.log('Request complete')
+  });
+
+
   }
+    
+  
+
+
+
   SaveNumber() {
-  if (
-    this.addNumber !== "" &&
-    this.addNumber.length > 4 &&
-    this.addNumber.length < 15 &&
-    !this.LabNumbers.includes(this.addNumber)
-  ) {
-    this.LabNumbers.push(this.addNumber);
+  this.http.post('http://127.0.0.1:8000/register/', { device_name: this.deviceName });
+ 
 
-    // Save permanently in localStorage
-    console.log(localStorage.setItem("LabNumbers", JSON.stringify(this.LabNumbers)));
-const stored = localStorage.getItem("LabNumbers");
-this.savedNumbers = stored ? JSON.parse(stored) : [];
-console.log(this.savedNumbers);
-  if (stored) {
-    this.LabNumbers = JSON.parse(stored);
-  } else {
-    this.LabNumbers = [];
-  }
 
-    alert("Number " + this.addNumber + " saved & subscribed");
-  }
-  else{
-    const stored = localStorage.getItem("LabNumbers");
-this.savedNumbers = stored ? JSON.parse(stored) : [];
-console.log(this.savedNumbers);
-
-  }
 }
 
 // Load saved numbers when app starts
 LoadNumbers() {
-  const saved = localStorage.getItem("LabNumbers");
-  if (saved) {
-    this.LabNumbers = JSON.parse(saved);
-  } else {
-    this.LabNumbers = [];
-  }
+ 
 }
 
   GadgetSMS() {
     // Basic popup prompt for SMS input
-    this.LoadNumbers();
-    const smsMessage = prompt("Enter your SMS message:");
+    
+   
+  }
+   messageCount = 0;
 
-    if (smsMessage !== null && smsMessage.trim() !== "" && this.addNumber !== "" && this.addNumber.length > 4 && this.addNumber.length < 15 && this.LabNumbers.includes(this.addNumber)) {
-      // For now, just log or alert the message
-      this.sms = smsMessage;
-      console.log(this.addNumber + " "+ smsMessage);
-      alert(smsMessage);
-
-      // Later, you can integrate with an SMS API here
-      // e.g., call a backend service to send the SMS
-    } else {
-      alert("No message entered.");
-    }
+  // Simulate message updates
+  addMessage() {
+    
   }
   pressedKey(num: string) {
     if (this.addNumber.length < 15) {
@@ -108,25 +96,15 @@ console.log(this.savedNumbers);
     setTimeout(() => this.showContacts = false, 200);
   }
   GadgetCall() {
-    this.LoadNumbers();
-    if (this.addNumber !== "" && this.addNumber.length > 4 && this.addNumber.length < 15 && this.LabNumbers.includes(this.addNumber)) {
-      // Use controller to simulate SMS/call
-      alert("on call ... or SMS sent");
-      this.addNumber = "";
-    } else {
-      alert("add contacts");
-    }
+ 
   }
 
  addNum(value: string){
 
  }
   CancelSubscription() {
-    
-    if (this.addNumber !== "") {
-      alert("Number " + this.addNumber + " unsubscribed");
-      this.addNumber = "";
+  
     }
-  }
+  
   
 }

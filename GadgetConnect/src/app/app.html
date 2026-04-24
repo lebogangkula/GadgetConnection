@@ -2,7 +2,11 @@
 <div class="container">
 
   <div class="gadgetUi">
-    <div class="top-bar">
+    <div class="top-bar" >
+      <div class="message-tag" style="margin-right: 20px;">
+  <span class="icon">🔔</span>
+  <span class="badge">{{ messageCount }}</span>
+</div>
       <button (click) = "GadgetSMS()" class="top-button">SMS</button>
       <button (click) = "SaveNumber()" class="top-button">Save</button>
     </div>
